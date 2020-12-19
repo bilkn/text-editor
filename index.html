@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Editor</title>
-    <meta name="description" content="Basic online text editor.">
-    <link rel="stylesheet" href="dist/css/main.css">
-    <script src="https://kit.fontawesome.com/89f8145b7d.js" crossorigin="anonymous"></script>
-    <script src="lib/main.js" defer></script>
-</head>
+    <meta name="description" content="Basic online text editor." />
+    <link rel="stylesheet" href="dist/css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/89f8145b7d.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/main.js" defer></script>
+  </head>
 
-<body>
-
-<div class="app-container">
-    <div class="file-input-container">
-         <h2 class="file-input-container__title">Copy or upload a text file for editing.</h2>
-         <label for="file">Please choose a text file for editing.</label>
-        <input class="file-input-container__input" type="file" name="file" id="file">
+  <body>
+    <div class="app-container">
+      <!-- File Input Container Start -->
+      <div class="file-input-container">
+        <h2 class="file-input-container__title">
+          Copy or upload a text file for editing.
+        </h2>
+        <label for="file">Please choose a text file for editing.</label>
+        <input
+          class="file-input-container__input file-input-js"
+          type="file"
+          name="file"
+          id="file"
+          accept=".txt"
+        />
+      </div>
+      <!-- File Input Container End -->
+      <div class="output-container">
+        <p class="output-container__text output-js" ></p>
+      </div>
     </div>
-</div>
-
-
-</body>
+  </body>
 </html>
