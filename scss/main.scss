@@ -1,1 +1,16 @@
-@import "./config", "./mixins", "./variables";
+@import './config', './mixins', './variables';
+
+ 
+.app-container {
+  padding-top: 5rem;
+}
+
+.file-input-container {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.file-input-container__title {
+  margin-bottom: 2rem;
+}
+
