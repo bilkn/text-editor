@@ -55,4 +55,41 @@ body {
   padding: 1rem;
   resize: none;
 }
+
+.finder-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 70%;
+}
+
+.finder-container__finder {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.3rem 1rem;
+  width: 100%;
+}
+
+.finder-container__find-btn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0.3rem 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.finder-container__find-btn:hover {
+  background-color: lighten;
+}
 /*# sourceMappingURL=main.css.map */
