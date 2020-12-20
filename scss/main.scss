@@ -1,6 +1,5 @@
 @import './config', './mixins', './variables';
 
- 
 .app-container {
   padding-top: 5rem;
 }
@@ -14,3 +13,21 @@
   margin-bottom: 2rem;
 }
 
+.input-controls {
+  margin-bottom: 2rem;
+}
+
+.output-container {
+  display: flex;
+  justify-content: center;
+  &__text-area {
+    appearance: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    min-height: 300px;
+    min-width: 70%;
+    padding: 1rem;
+    resize: none;
+  }
+}

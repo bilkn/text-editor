@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+:root {
+  font-family: sans-serif;
+}
+
 body {
   background-color: #cccccc;
 }
@@ -24,5 +28,31 @@ body {
 
 .file-input-container__title {
   margin-bottom: 2rem;
+}
+
+.input-controls {
+  margin-bottom: 2rem;
+}
+
+.output-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.output-container__text-area {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  min-height: 300px;
+  min-width: 70%;
+  padding: 1rem;
+  resize: none;
 }
 /*# sourceMappingURL=main.css.map */

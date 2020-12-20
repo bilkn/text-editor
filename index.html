@@ -20,18 +20,20 @@
         <h2 class="file-input-container__title">
           Copy or upload a text file for editing.
         </h2>
-        <label for="file">Please choose a text file for editing.</label>
-        <input
-          class="file-input-container__input file-input-js"
-          type="file"
-          name="file"
-          id="file"
-          accept=".txt"
-        />
+        <div class="input-controls">
+          <label for="file">Please choose a text file for editing.</label>
+          <input
+            class="file-input-container__input file-input-js"
+            type="file"
+            name="file"
+            id="file"
+            accept=".txt"
+          />
+        </div>
       </div>
       <!-- File Input Container End -->
       <div class="output-container">
-        <p class="output-container__text output-js" ></p>
+        <textarea class="output-container__text-area output-js"></textarea>
       </div>
     </div>
   </body>
