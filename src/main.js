@@ -31,4 +31,7 @@ fileInput.addEventListener('change', async () => {
     const text = await convertFileToText(file);
     output.textContent = text;
   }
+  else {
+      console.log("Wrong file type, please provide a text file.")
+  }
 });
