@@ -81,15 +81,11 @@ body {
 
 .finder-container__find-btn {
   border: none;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
   cursor: pointer;
   padding: 0.3rem 1rem;
   position: absolute;
   top: 0;
   right: 0;
-}
-
-.finder-container__find-btn:hover {
-  background-color: lighten;
 }
 /*# sourceMappingURL=main.css.map */

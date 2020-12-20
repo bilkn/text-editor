@@ -2,6 +2,14 @@
 
 const fileInput = document.querySelector('.file-input-js');
 const output = document.querySelector('.output-js');
+const findBtn = document.querySelector('.find-btn-js');
+const finder = document.querySelector('.finder-js');
+
+findBtn.addEventListener('click', () => {
+  const pattern = finder.value;
+  const outputText = output.value;
+  matchWordsWithPattern(textToArray(outputText), pattern);
+});
 
 function validateFile(file) {
   return file.type === 'text/plain';
@@ -29,9 +37,23 @@ fileInput.addEventListener('change', async () => {
   }
   if (validateFile(file)) {
     const text = await convertFileToText(file);
-    console.log(text);
     output.value = text;
   } else {
     console.log('Wrong file type, please provide a text file.');
   }
 });
+
+// Converts the text to an array.
+function textToArray(text) {
+  return text.split(' '); // ! Can be changed.
+}
+
+// Matches the finder pattern with an array of words and returns it.
+function matchWordsWithPattern(words, pattern) {
+  const regex = new RegExp(pattern, 'g');
+  let matches = words.flat().filter((word) => {
+    console.log(word);
+    return regex.test(word);
+  });
+  console.log(matches);
+}
