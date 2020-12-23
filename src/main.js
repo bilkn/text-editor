@@ -10,24 +10,26 @@ const editInput = document.querySelector('.edit-input-js');
 findBtn.addEventListener('click', () => {
   const pattern = finderInput.value;
   const outputText = output.value;
-  let words = textToArray(outputText);
-  let matches = matchWordsWithPattern(words, pattern);
   // ! Probably, it's a weak code, it would be improved in the future.
   editBtn.addEventListener('click', function editBtnCallback() {
-    editBtnHandler(matches, words);
+    editBtnHandler(pattern, outputText);
     editBtn.removeEventListener('click', editBtnCallback);
   });
 });
 
-function editBtnHandler(matches, words) {
+function editBtnHandler(pattern, outputText) {
+  if (pattern) {
   const editInputvalue = editInput.value;
-  const outputText = words.join(" ");
-  const regex = new RegExp(editInputvalue, "g");
-  outputText.replace()
-
-  if (!matches) {
-    matches.forEach();
+  const regex = new RegExp(pattern, "g");
+  const replacedOutputText = outputText.replace(regex, editInputvalue);
+  console.log(replacedOutputText);
+  replaceOutput(replacedOutputText);
   }
+  else console.log("Pattern is empty!")
+}
+
+function replaceOutput (outputText) {
+  output.value = outputText;
 }
 
 function validateFile(file) {
@@ -62,18 +64,3 @@ fileInput.addEventListener('change', async () => {
   }
 });
 
-// Converts the text to an array.
-function textToArray(text) {
-  return text.split(' '); // ! Can be changed.
-}
-
-// Matches the finderInput value (pattern) with an array of words (from the textarea), and returns a new array of object that includes matched words, and their indexes.
-// ! This function could be removed in the future.
-function matchWordsWithPattern(words, pattern) {
-  const regex = new RegExp(pattern, 'g');
-  let matches = [];
-  for (let [index, word] of Object.entries(words.flat())) {
-    if (regex.test(word)) matches.push({ word: word, index: index });
-  }
-  return matches;
-}
