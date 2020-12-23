@@ -54,5 +54,17 @@
     position: absolute;
     top: 0;
     right: 0;
+    width: 70px;
   }
 }
+
+.edit-container {
+  @extend .finder-container;
+  &__editor {
+    @extend .finder-container__finder;
+  }
+  &__edit-btn {
+    @extend .finder-container__find-btn;
+  }
+}
+

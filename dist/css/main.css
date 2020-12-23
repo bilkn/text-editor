@@ -56,7 +56,7 @@ body {
   resize: none;
 }
 
-.finder-container {
+.finder-container, .edit-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,7 +69,7 @@ body {
   width: 70%;
 }
 
-.finder-container__finder {
+.finder-container__finder, .edit-container__editor {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -79,7 +79,7 @@ body {
   width: 100%;
 }
 
-.finder-container__find-btn {
+.finder-container__find-btn, .edit-container__edit-btn {
   border: none;
   border-radius: 0 10px 10px 0;
   cursor: pointer;
@@ -87,5 +87,6 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  width: 70px;
 }
 /*# sourceMappingURL=main.css.map */
