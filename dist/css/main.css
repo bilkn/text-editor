@@ -48,12 +48,12 @@ body {
      -moz-appearance: none;
           appearance: none;
   border-radius: 10px;
-  font-size: 1.3rem;
+  background-color: #eff0f0;
+  font-size: 1.1rem;
   font-weight: 600;
+  width: 70%;
   min-height: 300px;
-  min-width: 70%;
   padding: 1rem;
-  resize: none;
 }
 
 .finder-container, .edit-container {
@@ -79,7 +79,7 @@ body {
   width: 100%;
 }
 
-.finder-container__find-btn, .edit-container__edit-btn {
+.finder-container__find-btn, .edit-container__replace-btn {
   border: none;
   border-radius: 0 10px 10px 0;
   cursor: pointer;
@@ -87,6 +87,6 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 70px;
+  width: 80px;
 }
 /*# sourceMappingURL=main.css.map */

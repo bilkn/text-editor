@@ -35,28 +35,34 @@
       <!-- Text Editor Container Start -->
       <div class="text-editor-container">
         <div class="finder-container">
-        <input
-          class="finder-container__finder finder-input-js"
-          type="search"
-          name="finder"
-          id="finder"
-        />
-        <button class="finder-container__find-btn find-btn-js">Find</button>
-      </div>
-      <div class="edit-container">
-        <input
-          class="edit-container__editor replace-input-js"
-          type="text"
-          name="edit"
-          id="edit"
-        />
-        <button class="edit-container__edit-btn replace-btn-js">Replace</button>
-      </div>
-
+          <input
+            class="finder-container__finder finder-input-js"
+            type="search"
+            name="finder"
+            id="finder"
+          />
+          <button type="button" class="finder-container__find-btn find-btn-js">
+            Find
+          </button>
+        </div>
+        <div class="edit-container">
+          <input
+            class="edit-container__editor replace-input-js"
+            type="text"
+            name="edit"
+            id="edit"
+          />
+          <button
+            type="button"
+            class="edit-container__replace-btn replace-btn-js"
+          >
+            Replace
+          </button>
+        </div>
       </div>
       <!-- Text Editor Container End -->
       <div class="output-container">
-        <textarea class="output-container__text-area output-js"></textarea>
+        <p contenteditable="true" class="output-container__text-area output-js"></p>
       </div>
     </div>
   </body>

@@ -23,12 +23,12 @@
   &__text-area {
     appearance: none;
     border-radius: 10px;
-    font-size: 1.3rem;
+    background-color: rgb(239, 240, 240);
+    font-size: 1.1rem;
     font-weight: 600;
+    width: 70%;
     min-height: 300px;
-    min-width: 70%;
     padding: 1rem;
-    resize: none;
   }
 }
 
@@ -54,7 +54,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 70px;
+    width: 80px;
   }
 }
 
@@ -63,8 +63,7 @@
   &__editor {
     @extend .finder-container__finder;
   }
-  &__edit-btn {
+  &__replace-btn {
     @extend .finder-container__find-btn;
   }
 }
-

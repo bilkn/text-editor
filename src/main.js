@@ -9,7 +9,7 @@ const replaceInput = document.querySelector('.replace-input-js');
 
 findBtn.addEventListener('click', () => {
   const pattern = finderInput.value;
-  const outputText = output.value;
+  const outputText = output.textContent;
   // ! Probably it's a weak code, it would be improved in the future.
   replaceBtn.addEventListener('click', function replaceBtnCallback() {
     replaceBtnHandler(pattern, outputText);
@@ -28,7 +28,7 @@ function replaceBtnHandler(pattern, outputText) {
 }
 
 function replaceOutput(outputText) {
-  output.value = outputText;
+  output.textContent = outputText;
 }
 
 function validateFile(file) {
@@ -57,7 +57,7 @@ fileInput.addEventListener('change', async () => {
   }
   if (validateFile(file)) {
     const text = await convertFileToText(file);
-    output.value = text;
+    output.textContent = text;
   } else {
     console.log('Wrong file type, please provide a text file.');
   }
