@@ -89,4 +89,8 @@ body {
   right: 0;
   width: 80px;
 }
+
+.highlight {
+  background-color: yellow;
+}
 /*# sourceMappingURL=main.css.map */

@@ -75,5 +75,5 @@ function addPatternToRegex(pattern) {
 // Adds highligth to the matched characters.
 function addHighlight(text, pattern) {
   const regex = addPatternToRegex(pattern);
-  return text.replace(regex, `<em>${pattern}</em>`);
+  return text.replace(regex, `<span class ="highlight">${pattern}</span>`);
 }
