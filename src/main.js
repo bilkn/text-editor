@@ -4,31 +4,30 @@ const fileInput = document.querySelector('.file-input-js');
 const output = document.querySelector('.output-js');
 const finderInput = document.querySelector('.finder-input-js');
 const findBtn = document.querySelector('.find-btn-js');
-const editBtn = document.querySelector('.edit-btn-js');
-const editInput = document.querySelector('.edit-input-js');
+const replaceBtn = document.querySelector('.replace-btn-js');
+const replaceInput = document.querySelector('.replace-input-js');
 
 findBtn.addEventListener('click', () => {
   const pattern = finderInput.value;
   const outputText = output.value;
-  // ! Probably, it's a weak code, it would be improved in the future.
-  editBtn.addEventListener('click', function editBtnCallback() {
-    editBtnHandler(pattern, outputText);
-    editBtn.removeEventListener('click', editBtnCallback);
+  // ! Probably it's a weak code, it would be improved in the future.
+  replaceBtn.addEventListener('click', function replaceBtnCallback() {
+    replaceBtnHandler(pattern, outputText);
+    replaceBtn.removeEventListener('click', replaceBtnCallback);
   });
 });
 
-function editBtnHandler(pattern, outputText) {
+// 
+function replaceBtnHandler(pattern, outputText) {
   if (pattern) {
-  const editInputvalue = editInput.value;
-  const regex = new RegExp(pattern, "g");
-  const replacedOutputText = outputText.replace(regex, editInputvalue);
-  console.log(replacedOutputText);
-  replaceOutput(replacedOutputText);
-  }
-  else console.log("Pattern is empty!")
+    const replaceInputValue = replaceInput.value;
+    const regex = new RegExp(pattern, 'g');
+    const replacedOutputText = outputText.replace(regex, replaceInputValue);
+    replaceOutput(replacedOutputText.replace(/\s\s/g, " "));
+  } else console.log('Pattern is empty!');
 }
 
-function replaceOutput (outputText) {
+function replaceOutput(outputText) {
   output.value = outputText;
 }
 
@@ -63,4 +62,3 @@ fileInput.addEventListener('change', async () => {
     console.log('Wrong file type, please provide a text file.');
   }
 });
-
