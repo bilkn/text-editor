@@ -10,23 +10,28 @@ const replaceInput = document.querySelector('.replace-input-js');
 findBtn.addEventListener('click', () => {
   const pattern = finderInput.value;
   const outputText = output.textContent;
-  const highlightedText = addHighlight(outputText, pattern);
-  highlightOutput(highlightedText);
-  // ! Probably it's a weak code, it would be improved in the future.
-  replaceBtn.addEventListener('click', function replaceBtnCallback() {
-    replaceBtnHandler(pattern);
-    replaceBtn.removeEventListener('click', replaceBtnCallback);
-  });
+  if (pattern) {
+    const highlightedText = addHighlight(outputText, pattern);
+    highlightOutput(highlightedText);
+    const matchesCount = countMatches(outputText, pattern);
+    matchesCount ? (replaceBtn.disabled = false) : (replaceBtn.disabled = true);
+  } else {
+    console.log('Pattern is empty!');
+  }
+});
+
+replaceBtn.addEventListener('click', () => {
+  const pattern = finderInput.value;
+  pattern ? replaceBtnHandler(pattern) : console.log('Pattern is empty!');
 });
 
 function replaceBtnHandler(pattern) {
-  if (pattern) {
-    const outputText = output.textContent;
-    const replaceInputValue = replaceInput.value;
-    const regex = addPatternToRegex(pattern);
-    const replacedOutputText = outputText.replace(regex, replaceInputValue);
-    replaceOutput(replacedOutputText.replace(/\s\s/g, ' '));
-  } else console.log('Pattern is empty!');
+  replaceBtn.disabled = true;
+  const outputText = output.textContent;
+  const replaceInputValue = replaceInput.value;
+  const regex = addPatternToRegex(pattern);
+  const replacedOutputText = outputText.replace(regex, replaceInputValue);
+  replaceOutput(replacedOutputText.replace(/\s\s/g, ' '));
 }
 
 function highlightOutput(text) {
@@ -38,7 +43,11 @@ function replaceOutput(outputText) {
 }
 
 function validateFile(file) {
-  return file.type === 'text/plain';
+  try {
+    return file.type === 'text/plain';
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function convertFileToText(file) {
@@ -49,7 +58,6 @@ async function convertFileToText(file) {
   } catch {
     console.log('Error, file could not be converted.');
   }
-
   return text;
 }
 
@@ -77,4 +85,14 @@ function addPatternToRegex(pattern) {
 function addHighlight(text, pattern) {
   const regex = addPatternToRegex(pattern);
   return text.replace(regex, `<span class ="highlight">${pattern}</span>`);
+}
+
+// Counts the matched groups of characters.
+function countMatches(text, pattern) {
+  const regex = addPatternToRegex(pattern);
+  try {
+    return text.match(regex).length;
+  } catch {
+    return 0;
+  }
 }
