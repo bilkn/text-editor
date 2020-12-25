@@ -6,12 +6,14 @@ const finderInput = document.querySelector('.finder-input-js');
 const findBtn = document.querySelector('.find-btn-js');
 const replaceBtn = document.querySelector('.replace-btn-js');
 const replaceInput = document.querySelector('.replace-input-js');
+
 window.addEventListener('load', windowLoadEventHandler);
 findBtn.addEventListener('click', findBtnHandler);
 replaceBtn.addEventListener('click', replaceBtnHandler);
 
 function windowLoadEventHandler() {
   output.textContent = localStorage.getItem('savedText') || '';
+  setInterval(saveCurrentText, 30000);
 }
 
 function findBtnHandler() {
@@ -36,10 +38,14 @@ function replaceBtnHandler() {
     const regex = addPatternToRegex(pattern);
     const replacedOutputText = outputText.replace(regex, replaceInputValue);
     replaceOutput(replacedOutputText.replace(/\s\s/g, ' '));
-    localStorage.setItem('savedText', output.textContent);
+    saveCurrentText();
   } else {
     console.log('Pattern is empty!');
   }
+}
+
+function saveCurrentText() {
+  localStorage.setItem('savedText', output.textContent);
 }
 
 function highlightOutput(text) {
