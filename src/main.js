@@ -10,17 +10,18 @@ const replaceInput = document.querySelector('.replace-input-js');
 findBtn.addEventListener('click', () => {
   const pattern = finderInput.value;
   const outputText = output.textContent;
-  const highlightedText = addHighlight(outputText,pattern);
+  const highlightedText = addHighlight(outputText, pattern);
   highlightOutput(highlightedText);
   // ! Probably it's a weak code, it would be improved in the future.
   replaceBtn.addEventListener('click', function replaceBtnCallback() {
-    replaceBtnHandler(pattern, outputText);
+    replaceBtnHandler(pattern);
     replaceBtn.removeEventListener('click', replaceBtnCallback);
   });
 });
 
-function replaceBtnHandler(pattern, outputText) {
+function replaceBtnHandler(pattern) {
   if (pattern) {
+    const outputText = output.textContent;
     const replaceInputValue = replaceInput.value;
     const regex = addPatternToRegex(pattern);
     const replacedOutputText = outputText.replace(regex, replaceInputValue);
@@ -28,7 +29,7 @@ function replaceBtnHandler(pattern, outputText) {
   } else console.log('Pattern is empty!');
 }
 
-function highlightOutput (text) {
+function highlightOutput(text) {
   output.innerHTML = text;
 }
 
@@ -72,7 +73,7 @@ function addPatternToRegex(pattern) {
   return new RegExp(pattern, 'g');
 }
 
-// Adds highligth to the matched characters.
+// Adds highlight to the matched characters.
 function addHighlight(text, pattern) {
   const regex = addPatternToRegex(pattern);
   return text.replace(regex, `<span class ="highlight">${pattern}</span>`);
