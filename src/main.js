@@ -6,32 +6,40 @@ const finderInput = document.querySelector('.finder-input-js');
 const findBtn = document.querySelector('.find-btn-js');
 const replaceBtn = document.querySelector('.replace-btn-js');
 const replaceInput = document.querySelector('.replace-input-js');
+window.addEventListener('load', windowLoadEventHandler);
+findBtn.addEventListener('click', findBtnHandler);
+replaceBtn.addEventListener('click', replaceBtnHandler);
 
-findBtn.addEventListener('click', () => {
+function windowLoadEventHandler() {
+  output.textContent = localStorage.getItem('savedText') || '';
+}
+
+function findBtnHandler() {
   const pattern = finderInput.value;
   const outputText = output.textContent;
   if (pattern) {
     const highlightedText = addHighlight(outputText, pattern);
     highlightOutput(highlightedText);
     const matchesCount = countMatches(outputText, pattern);
-    matchesCount ? (replaceBtn.disabled = false) : (replaceBtn.disabled = true);
+    matchesCount ? activateUI(replaceBtn) : disableUI(replaceBtn);
   } else {
     console.log('Pattern is empty!');
   }
-});
+}
 
-replaceBtn.addEventListener('click', () => {
+function replaceBtnHandler() {
   const pattern = finderInput.value;
-  pattern ? replaceBtnHandler(pattern) : console.log('Pattern is empty!');
-});
-
-function replaceBtnHandler(pattern) {
-  replaceBtn.disabled = true;
-  const outputText = output.textContent;
-  const replaceInputValue = replaceInput.value;
-  const regex = addPatternToRegex(pattern);
-  const replacedOutputText = outputText.replace(regex, replaceInputValue);
-  replaceOutput(replacedOutputText.replace(/\s\s/g, ' '));
+  if (pattern) {
+    disableUI(replaceBtn);
+    const outputText = output.textContent;
+    const replaceInputValue = replaceInput.value;
+    const regex = addPatternToRegex(pattern);
+    const replacedOutputText = outputText.replace(regex, replaceInputValue);
+    replaceOutput(replacedOutputText.replace(/\s\s/g, ' '));
+    localStorage.setItem('savedText', output.textContent);
+  } else {
+    console.log('Pattern is empty!');
+  }
 }
 
 function highlightOutput(text) {
@@ -95,4 +103,14 @@ function countMatches(text, pattern) {
   } catch {
     return 0;
   }
+}
+
+function activateUI(ui) {
+  ui.disabled = false;
+  ui.classList.remove('not-allowed-cursor');
+}
+
+function disableUI(ui) {
+  ui.disabled = true;
+  ui.classList.add('not-allowed-cursor');
 }

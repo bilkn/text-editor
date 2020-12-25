@@ -19,11 +19,13 @@ body {
   padding-top: 5rem;
 }
 
+.text-editor-container {
+  margin: 0 auto;
+}
+
 .file-input-container {
   margin: 0 auto;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  text-align: center;
 }
 
 .file-input-container__title {
@@ -92,5 +94,9 @@ body {
 
 .highlight {
   background-color: yellow;
+}
+
+.not-allowed-cursor {
+  cursor: not-allowed;
 }
 /*# sourceMappingURL=main.css.map */

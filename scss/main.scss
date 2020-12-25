@@ -4,9 +4,13 @@
   padding-top: 5rem;
 }
 
+.text-editor-container {
+  margin: 0 auto;
+}
+
 .file-input-container {
   margin: 0 auto;
-  width: max-content;
+  text-align: center;
 }
 
 .file-input-container__title {
@@ -70,4 +74,8 @@
 
 .highlight {
   background-color: yellow;
+}
+
+.not-allowed-cursor {
+  cursor: not-allowed;
 }
