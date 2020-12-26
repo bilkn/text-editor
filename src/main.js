@@ -8,11 +8,15 @@ const replaceBtn = document.querySelector('.replace-btn-js');
 const replaceInput = document.querySelector('.replace-input-js');
 const matchCountDisplay = document.querySelector('.match-count-js');
 const downloadBtn = document.querySelector('.download-btn-js');
+const copyBtn = document.querySelector('.copy-btn-js');
 
 window.addEventListener('load', windowLoadEventHandler);
 findBtn.addEventListener('click', findBtnHandler);
 replaceBtn.addEventListener('click', replaceBtnHandler);
 downloadBtn.addEventListener('click', downloadBtnHandler);
+copyBtn.addEventListener('click', () => {
+  output.textContent ? copyToClipboard() : console.log('Text is empty!');
+});
 
 function windowLoadEventHandler() {
   output.textContent = localStorage.getItem('savedText') || '';
@@ -142,4 +146,15 @@ function disableUI(ui) {
 function updateMatchCountDisplay(count) {
   matchCountDisplay.textContent = `${count} matches found.`;
   matchCountDisplay.style.visibility = 'visible';
+}
+
+function copyToClipboard() {
+  const text = output.textContent;
+  const elem = document.createElement('textarea');
+  document.body.appendChild(elem);
+  elem.value = text;
+  elem.select();
+  document.execCommand('copy');
+  document.body.removeChild(elem);
+  console.log('Text is copied.');
 }

@@ -6,7 +6,6 @@
 
 .text-editor-container {
   margin: 0 auto;
- 
 }
 
 .file-input-container {
@@ -84,8 +83,10 @@
 
 .file-output-container {
   text-align: center;
-  &__download-btn {
-    padding: .5rem 1.5rem;
+  &__btn {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    width: 120px;
   }
 }
 
