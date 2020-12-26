@@ -17,10 +17,23 @@
   &__input {
     width: 190px;
   }
+  &__input::-webkit-file-upload-button {
+    cursor: pointer;
+  }
 }
 
 .input-controls {
   margin-bottom: 2rem;
+  &__input-label {
+    background-color: rgb(224, 224, 224);
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+  }
+  &__input-label:hover {
+    background-color: darken(rgb(224, 224, 224), 1%);
+  }
 }
 
 .output-container {
