@@ -43,6 +43,7 @@ function replaceBtnHandler() {
     const replacedOutputText = outputText.replace(regex, replaceInputValue);
     replaceOutput(replacedOutputText.replace(/\s\s/g, ' '));
     saveCurrentText();
+    updateMatchCountDisplay(0);
   } else {
     console.log('Pattern is empty!');
   }
