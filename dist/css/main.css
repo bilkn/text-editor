@@ -32,6 +32,10 @@ body {
   margin-bottom: 2rem;
 }
 
+.file-input-container__input {
+  width: 190px;
+}
+
 .input-controls {
   margin-bottom: 2rem;
 }

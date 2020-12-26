@@ -11,10 +11,12 @@
 .file-input-container {
   margin: 0 auto;
   text-align: center;
-}
-
-.file-input-container__title {
-  margin-bottom: 2rem;
+  &__title {
+    margin-bottom: 2rem;
+  }
+  &__input {
+    width: 190px;
+  }
 }
 
 .input-controls {
