@@ -6,6 +6,7 @@
 
 .text-editor-container {
   margin: 0 auto;
+ 
 }
 
 .file-input-container {
@@ -24,6 +25,7 @@
 .output-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 1rem;
   &__text-area {
     appearance: none;
     border-radius: 10px;
@@ -60,6 +62,14 @@
     right: 0;
     width: 80px;
   }
+  &__match-count {
+    font-size: 0.9rem;
+    margin: 0 auto 5px auto;
+    padding-right: 10px;
+    text-align: end;
+    visibility: hidden;
+    width: 70%;
+  }
 }
 
 .edit-container {
@@ -69,6 +79,13 @@
   }
   &__replace-btn {
     @extend .finder-container__find-btn;
+  }
+}
+
+.file-output-container {
+  text-align: center;
+  &__download-btn {
+    padding: .5rem 1.5rem;
   }
 }
 

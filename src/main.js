@@ -6,14 +6,17 @@ const finderInput = document.querySelector('.finder-input-js');
 const findBtn = document.querySelector('.find-btn-js');
 const replaceBtn = document.querySelector('.replace-btn-js');
 const replaceInput = document.querySelector('.replace-input-js');
+const matchCountDisplay = document.querySelector('.match-count-js');
+const downloadBtn = document.querySelector('.download-btn-js');
 
 window.addEventListener('load', windowLoadEventHandler);
 findBtn.addEventListener('click', findBtnHandler);
 replaceBtn.addEventListener('click', replaceBtnHandler);
+downloadBtn.addEventListener('click', downloadBtnHandler);
 
 function windowLoadEventHandler() {
   output.textContent = localStorage.getItem('savedText') || '';
-  setInterval(saveCurrentText, 30000);
+  setInterval(saveCurrentText, 30000); // Saves the current text to the local storage every 30 seconds.
 }
 
 function findBtnHandler() {
@@ -23,6 +26,7 @@ function findBtnHandler() {
     const highlightedText = addHighlight(outputText, pattern);
     highlightOutput(highlightedText);
     const matchesCount = countMatches(outputText, pattern);
+    updateMatchCountDisplay(matchesCount);
     matchesCount ? activateUI(replaceBtn) : disableUI(replaceBtn);
   } else {
     console.log('Pattern is empty!');
@@ -42,6 +46,19 @@ function replaceBtnHandler() {
   } else {
     console.log('Pattern is empty!');
   }
+}
+
+function downloadBtnHandler() {
+  const outputText = output.textContent;
+  let element = document.createElement('a');
+  element.setAttribute(
+    'href',
+    'data:text/plain;charset=utf-8,' + encodeURIComponent(outputText)
+  );
+  element.setAttribute('download', 'output.txt');
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
 
 function saveCurrentText() {
@@ -119,4 +136,9 @@ function activateUI(ui) {
 function disableUI(ui) {
   ui.disabled = true;
   ui.classList.add('not-allowed-cursor');
+}
+
+function updateMatchCountDisplay(count) {
+  matchCountDisplay.textContent = `${count} matches found.`;
+  matchCountDisplay.style.visibility = 'visible';
 }

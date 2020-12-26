@@ -43,6 +43,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .output-container__text-area {
@@ -90,6 +91,23 @@ body {
   top: 0;
   right: 0;
   width: 80px;
+}
+
+.finder-container__match-count {
+  font-size: 0.9rem;
+  margin: 0 auto 5px auto;
+  padding-right: 10px;
+  text-align: end;
+  visibility: hidden;
+  width: 70%;
+}
+
+.file-output-container {
+  text-align: center;
+}
+
+.file-output-container__download-btn {
+  padding: .5rem 1.5rem;
 }
 
 .highlight {
