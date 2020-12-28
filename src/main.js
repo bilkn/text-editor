@@ -8,17 +8,24 @@ const replaceBtn = document.querySelector('.replace-btn-js');
 const replaceInput = document.querySelector('.replace-input-js');
 const matchCountDisplay = document.querySelector('.match-count-js');
 const downloadBtn = document.querySelector('.download-btn-js');
+const copyBtn = document.querySelector('.copy-btn-js');
 
 window.addEventListener('load', windowLoadEventHandler);
 findBtn.addEventListener('click', findBtnHandler);
 replaceBtn.addEventListener('click', replaceBtnHandler);
-downloadBtn.addEventListener('click', downloadBtnHandler);
+downloadBtn.addEventListener('click', () => {
+  output.textContent ? downloadBtnHandler() : console.log('Text is empty!');
+});
+copyBtn.addEventListener('click', () => {
+  output.textContent ? copyToClipboard() : console.log('Text is empty!');
+});
 
 function windowLoadEventHandler() {
   output.textContent = localStorage.getItem('savedText') || '';
-  setInterval(saveCurrentText, 30000); // Saves the current text to the local storage every 30 seconds.
+  setInterval(saveCurrentText, 30000); // Saves the current output text to the local storage every 30 seconds.
 }
 
+// Highlights the matched characters.
 function findBtnHandler() {
   const pattern = finderInput.value;
   const outputText = output.textContent;
@@ -33,6 +40,7 @@ function findBtnHandler() {
   }
 }
 
+// Replaces the output text according to the finder input value (pattern).
 function replaceBtnHandler() {
   const pattern = finderInput.value;
   if (pattern) {
@@ -49,6 +57,7 @@ function replaceBtnHandler() {
   }
 }
 
+// Downloads the output text.
 function downloadBtnHandler() {
   const outputText = output.textContent;
   let element = document.createElement('a');
@@ -93,7 +102,10 @@ async function convertFileToText(file) {
   return text;
 }
 
-fileInput.addEventListener('change', async () => {
+fileInput.addEventListener('change', fileInputHandler);
+
+// ! Divide this function to the parts.
+async function fileInputHandler() {
   let file = null;
   try {
     file = await fileInput.files[0];
@@ -107,13 +119,13 @@ fileInput.addEventListener('change', async () => {
   } else {
     console.log('Wrong file type, please provide a text file.');
   }
-});
+}
 
 function addPatternToRegex(pattern) {
   return new RegExp(pattern, 'g');
 }
 
-// Adds highlight to the matched characters.
+// Highlights the matched characters.
 function addHighlight(text, pattern) {
   const regex = addPatternToRegex(pattern);
   return text.replace(regex, `<span class ="highlight">${pattern}</span>`);
@@ -142,4 +154,16 @@ function disableUI(ui) {
 function updateMatchCountDisplay(count) {
   matchCountDisplay.textContent = `${count} matches found.`;
   matchCountDisplay.style.visibility = 'visible';
+}
+
+// Copies output text to the clipboard.
+function copyToClipboard() {
+  const text = output.textContent;
+  const elem = document.createElement('textarea');
+  document.body.appendChild(elem);
+  elem.value = text;
+  elem.select();
+  document.execCommand('copy');
+  document.body.removeChild(elem);
+  console.log('Text is copied.');
 }

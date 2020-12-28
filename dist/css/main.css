@@ -32,8 +32,28 @@ body {
   margin-bottom: 2rem;
 }
 
+.file-input-container__input {
+  width: 190px;
+}
+
+.file-input-container__input::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
 .input-controls {
   margin-bottom: 2rem;
+}
+
+.input-controls__input-label {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+}
+
+.input-controls__input-label:hover {
+  background-color: #dddddd;
 }
 
 .output-container {
@@ -106,8 +126,10 @@ body {
   text-align: center;
 }
 
-.file-output-container__download-btn {
-  padding: .5rem 1.5rem;
+.file-output-container__btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  width: 120px;
 }
 
 .highlight {

@@ -21,13 +21,14 @@
           Copy or upload a text file for editing.
         </h2>
         <div class="input-controls">
-          <label for="file">Please choose a text file for editing.</label>
+          <label class="input-controls__input-label" for="file">Upload</label>
           <input
             class="file-input-container__input file-input-js"
             type="file"
             name="file"
             id="file"
             accept=".txt"
+            hidden
           />
         </div>
       </div>
@@ -69,9 +70,10 @@
           ></p>
         </div>
         <div class="file-output-container">
-          <button class="file-output-container__download-btn download-btn-js">
+          <button class="file-output-container__btn download-btn-js">
             Download
           </button>
+          <button class="file-output-container__btn copy-btn-js">Copy</button>
         </div>
       </div>
 
