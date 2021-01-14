@@ -41,7 +41,6 @@ npm run start
 4. Explore
 
 ``` 
-
 :)
 ```
 
